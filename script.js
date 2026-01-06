@@ -6,15 +6,15 @@ const URLS = {
     "https://lp.be-engineer.tech/pages/new_year_2026.html?utm_source=flyer&utm_medium=offline&utm_campaign=spring_event_2026&utm_term=programming_camp&utm_content=text_link",
   works: {
     work1: "https://v0-programming-language-website-dusky.vercel.app/",
-    work2: "https://v0-chess-learning-website.vercel.app/",
+    work2: "https://v0-ghost-website.vercel.app/",
     work3: "https://v0-japanese-castles-website.vercel.app/",
   },
 };
 
 const TITLES = {
-  work1: "STEP 1｜Programming Language Website",
-  work2: "STEP 2｜Chess Learning Website",
-  work3: "STEP 3｜Japanese Castles Website",
+  work1: "中学１年生（１年目）｜Programming Language Website",
+  work2: "中学３年生（２年目）｜Ghost Website",
+  work3: "高校１年生（２年目）｜Japanese Castles Website",
 };
 
 const modal = document.getElementById("workModal");
@@ -24,6 +24,26 @@ const openNew = document.getElementById("modalOpenNew");
 
 let lastActiveElement = null;
 let scrollY = 0;
+
+function prefersReducedMotion() {
+  return window.matchMedia?.("(prefers-reduced-motion: reduce)")?.matches === true;
+}
+
+function smoothScrollToId(id) {
+  const el = document.getElementById(id);
+  if (!el) return;
+  if (modal.classList.contains("is-open")) return;
+
+  const behavior = prefersReducedMotion() ? "auto" : "smooth";
+  el.scrollIntoView({ behavior, block: "start" });
+
+  // 位置をURLに残す（ジャンプさせないため pushState）
+  try {
+    history.pushState(null, "", `#${id}`);
+  } catch {
+    // noop
+  }
+}
 
 function lockScroll() {
   scrollY = window.scrollY || 0;

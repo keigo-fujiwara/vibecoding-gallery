@@ -15,6 +15,11 @@
 
 *{ box-sizing: border-box; }
 html, body{ height: 100%; }
+html{
+  scroll-behavior: smooth;
+  /* sticky header 分の余白（アンカー移動時に見出しが隠れないように） */
+  scroll-padding-top: 78px;
+}
 body{
   margin: 0;
   background: var(--bg);
@@ -111,7 +116,7 @@ button{ font: inherit; }
 .hero{
   position: relative;
   overflow: hidden;
-  padding: 52px 0 28px;
+  padding: 0 0 28px;
 }
 .hero::before{
   content: "";
@@ -127,9 +132,10 @@ button{ font: inherit; }
 .hero__inner{
   position: relative;
   display: grid;
-  grid-template-columns: 1.15fr .85fr;
+  grid-template-columns: 1.12fr .88fr;
   gap: 26px;
-  align-items: center;
+  /* 左カラム（hero__copy）の上辺に合わせて、右のpanelも上揃え */
+  align-items: start;
 }
 .hero__eyebrow{
   display: inline-flex;
@@ -150,9 +156,10 @@ button{ font: inherit; }
 }
 .hero__title{
   margin: 0 0 10px;
-  font-size: clamp(28px, 5.2vw, 44px);
+  font-size: clamp(22px, 5.2vw, 44px);
   line-height: 1.18;
   letter-spacing: -.01em;
+  white-space: nowrap;
 }
 .hero__sub{
   margin: 0 0 18px;
@@ -160,38 +167,11 @@ button{ font: inherit; }
   font-size: 15px;
   max-width: 42em;
 }
-.hero__actions{
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  margin-bottom: 14px;
-}
-.hero__chips{
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-}
-.chip{
-  border: 1px solid rgba(0, 68, 51, .16);
-  background: rgba(255,255,255,.66);
-  padding: 7px 10px;
-  border-radius: 999px;
-  font-size: 12px;
-  font-weight: 700;
-  color: rgba(0, 68, 51, .86);
-}
-.chip--accent{
-  border-color: rgba(0, 128, 0, .35);
-  background: rgba(0, 128, 0, .08);
-  color: rgba(0, 68, 51, .96);
-}
 
 /* Hero panel */
 .hero__panel{
   justify-self: end;
+  margin-top: 28px;
 }
 .panel{
   width: min(420px, 100%);
@@ -284,6 +264,7 @@ button{ font: inherit; }
 /* Section head */
 .works{
   padding: 24px 0 40px;
+  scroll-margin-top: 78px;
 }
 .sectionHead{
   display: grid;
@@ -346,11 +327,20 @@ button{ font: inherit; }
 .workCard__meta{
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: flex-start;
   gap: 10px;
   margin-bottom: 10px;
   position: relative;
   z-index: 1;
+  /* 右上の三角アクセントと被らないように逃がす */
+  padding-right: 86px;
+}
+.workCard__step{
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  max-width: 100%;
 }
 .stepBadge{
   display: inline-flex;
@@ -380,6 +370,34 @@ button{ font: inherit; }
   letter-spacing: -.01em;
   position: relative;
   z-index: 1;
+}
+.workCard__student{
+  margin: 0 0 10px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 10px;
+  border-radius: 999px;
+  border: 1px solid rgba(0, 68, 51, .14);
+  background: rgba(255, 255, 255, .70);
+  color: rgba(0, 68, 51, .88);
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: .02em;
+  position: relative;
+  z-index: 1;
+  width: fit-content;
+}
+.workCard__meta .workCard__student{
+  margin: 0;
+}
+.workCard__student::before{
+  content:"";
+  width: 8px;
+  height: 8px;
+  border-radius: 999px;
+  background: rgba(0, 128, 0, .82);
+  box-shadow: 0 0 0 4px rgba(0, 128, 0, .12);
 }
 .workCard__desc{
   margin: 0 0 12px;
@@ -601,7 +619,13 @@ button{ font: inherit; }
 }
 .modal__dialog{
   position: absolute;
-  inset: 12px;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 80vw;
+  height: 80vh;
+  max-width: 1120px;
+  max-height: 860px;
   border-radius: 18px;
   background: rgba(255,255,255,.96);
   border: 1px solid rgba(255,255,255,.32);
@@ -675,7 +699,7 @@ body.is-modal-open{
 /* Responsive */
 @media (max-width: 940px){
   .hero__inner{ grid-template-columns: 1fr; }
-  .hero__panel{ justify-self: start; }
+  .hero__title{ white-space: nowrap; }
   .cta__inner{ grid-template-columns: 1fr; }
   .cta__actions{ justify-self: start; text-align: left; }
   .steps{ grid-template-columns: 1fr; }
@@ -686,8 +710,16 @@ body.is-modal-open{
   .container{ width: min(var(--container), calc(100% - 28px)); }
   .header__nav{ gap: 6px; }
   .navlink{ padding: 9px 10px; font-size: 13px; }
-  .modal__dialog{ inset: 8px; border-radius: 16px; }
-  .hero{ padding-top: 42px; }
+  .modal__dialog{
+    width: calc(100vw - 16px);
+    height: calc(100vh - 16px);
+    border-radius: 16px;
+  }
+  .hero__title{ font-size: clamp(20px, 6vw, 34px); }
+}
+
+@media (max-width: 380px){
+  .hero__title{ font-size: clamp(18px, 6.4vw, 30px); }
 }
 
 @media (prefers-reduced-motion: reduce){

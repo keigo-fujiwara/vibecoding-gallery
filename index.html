@@ -7,7 +7,7 @@
     <title>生徒のバイブコーディング作品紹介｜BeEngineer</title>
     <meta
       name="description"
-      content="プログラミング未経験から始めた生徒たちが、AIと一緒に作り上げた作品集。STEP1→STEP3で成長が伝わるシングルページ。"
+      content="プログラミング未経験から始めた生徒たちが、AIと一緒に作り上げた作品集。①→③にかけて成長が伝わるシングルページ。"
     />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -22,7 +22,13 @@
 
     <header class="header">
       <div class="container header__inner">
-        <a class="brand" href="./" aria-label="BeEngineer トップへ">
+        <a
+          class="brand"
+          href="https://be-engineer.tech/"
+          aria-label="BeEngineer トップへ"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
           <img
             class="brand__logo"
             src="img/logo_color.svg"
@@ -37,8 +43,14 @@
         </a>
 
         <nav class="header__nav" aria-label="ページ内ナビゲーション">
-          <a class="navlink" href="#works">作品紹介</a>
-          <a class="navlink navlink--cta" href="#cta">無料体験</a>
+          <a
+            class="navlink navlink--cta"
+            href="https://lp.be-engineer.tech/pages/new_year_2026.html?utm_source=flyer&utm_medium=offline&utm_campaign=spring_event_2026&utm_term=programming_camp&utm_content=text_link"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            無料体験に申し込む
+          </a>
         </nav>
       </div>
     </header>
@@ -52,16 +64,6 @@
             <p class="hero__sub">
               プログラミング未経験から始めた生徒たちが、AIと一緒に作り上げた作品集です。
             </p>
-            <div class="hero__actions">
-              <a class="btn btn--primary" href="#works">作品を見る</a>
-              <a class="btn btn--ghost" href="#cta">無料体験へ</a>
-            </div>
-
-            <ul class="hero__chips" aria-label="特徴">
-              <li class="chip">スマホ中心</li>
-              <li class="chip">シングルページ</li>
-              <li class="chip chip--accent">STEPで成長</li>
-            </ul>
           </div>
 
           <div class="hero__panel" aria-hidden="true">
@@ -94,15 +96,14 @@
           <header class="sectionHead">
             <h2 class="sectionHead__title">作品紹介</h2>
             <p class="sectionHead__sub">
-              ①→③にかけてクオリティが上がっていく構成です。ぜひSTEP順に見て、成長を体感してください。
+              たった１時間でこのクオリティのページを作成し、公開までしました！
             </p>
           </header>
 
           <div class="steps" role="list">
             <article class="workCard workCard--step1" role="listitem">
               <div class="workCard__meta">
-                <span class="stepBadge stepBadge--1">STEP 1</span>
-                <span class="stepHint">まずは形にする</span>
+                <span class="workCard__student">中学１年生（１年目）</span>
               </div>
               <h3 class="workCard__title">Programming Language Website</h3>
               <p class="workCard__desc">
@@ -115,16 +116,15 @@
 
             <article class="workCard workCard--step2" role="listitem">
               <div class="workCard__meta">
-                <span class="stepBadge stepBadge--2">STEP 2</span>
-                <span class="stepHint">学びを設計する</span>
+                <span class="workCard__student">中学３年生（２年目）</span>
               </div>
-              <h3 class="workCard__title">Chess Learning Website</h3>
+              <h3 class="workCard__title">Ghost Website</h3>
               <p class="workCard__desc">
-                情報設計と導線を意識して、学習体験としてのまとまりを強化。
+                世界観と情報設計を両立しながら、見せ方・動き・導線をアップデート。
               </p>
               <ul class="workCard__points" aria-label="ポイント">
-                <li>読みやすい構成</li>
-                <li>よりリッチな見た目</li>
+                <li>世界観のあるデザイン</li>
+                <li>よりリッチな体験</li>
               </ul>
               <button class="btn btn--card" type="button" data-work="work2">
                 作品を見る
@@ -133,8 +133,7 @@
 
             <article class="workCard workCard--step3" role="listitem">
               <div class="workCard__meta">
-                <span class="stepBadge stepBadge--3">STEP 3</span>
-                <span class="stepHint">世界観まで作り込む</span>
+                <span class="workCard__student">高校１年生（２年目）</span>
               </div>
               <h3 class="workCard__title">Japanese Castles Website</h3>
               <p class="workCard__desc">
@@ -160,7 +159,7 @@
         <div class="container cta__inner">
           <div class="cta__copy">
             <h2 class="cta__title">
-              バイブコーディングに挑戦したい方はこちら！ 春の無料体験会 開催中
+              バイブコーディングに挑戦したい方はこちら！ <br>春の無料体験会 開催中
             </h2>
             <p class="cta__sub">
               初心者でもOK。AIと一緒に、最初の一歩を踏み出しましょう。
@@ -170,7 +169,7 @@
             <a class="btn btn--cta" href="#" data-spring-link>
               無料体験に申し込む
             </a>
-            <p class="cta__note">※外部ページ（春LP）へ移動します</p>
+            <p class="cta__note">※26春のイベント紹介ページへ移動します</p>
           </div>
         </div>
       </section>
