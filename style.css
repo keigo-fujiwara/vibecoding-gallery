@@ -263,7 +263,7 @@ button{ font: inherit; }
 
 /* Section head */
 .works{
-  padding: 24px 0 40px;
+  padding: 10px 0;
   scroll-margin-top: 78px;
 }
 .sectionHead{
